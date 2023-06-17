@@ -1,9 +1,9 @@
-class transaction;
+class transaction; // declare 
   
-  bit newd;
-  rand bit wr;
-  rand bit [7:0] wdata;
-  rand bit [6:0] addr;
+  bit newd; // declare newd variable with single bit 
+  rand bit wr; // declare write variable with single bit
+  rand bit [7:0] wdata; // store values from 0 to 255 
+  rand bit [6:0] addr; // store values from 0 to 127
   bit [7:0] rdata;
   bit done;
   
