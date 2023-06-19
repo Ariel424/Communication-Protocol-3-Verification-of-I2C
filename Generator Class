@@ -1,0 +1,30 @@
+class generator;
+  
+  transaction tr;
+  mailbox #(transaction) mbxgd;
+  event done; ///gen completed sending requested no. of transaction
+  event drvnext; /// dr complete its wor;
+  event sconext; ///scoreboard complete its work
+ 
+   int count = 0;
+  
+  function new( mailbox #(transaction) mbxgd);
+    this.mbxgd = mbxgd;   
+    tr =new();
+  endfunction
+  
+    task run();
+    
+    repeat(count) begin
+      assert(tr.randomize) else $error("Randomization Failed");
+      mbxgd.put(tr.copy);
+      tr.display("GEN");
+      @(drvnext);
+      @(sconext);
+    end
+    -> done;
+  endtask
+
+   
+endclass
+ 
