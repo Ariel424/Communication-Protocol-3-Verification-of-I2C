@@ -8,7 +8,7 @@ module eeprom_top // Electronically Erasable Programmable Read-Only Memory
  input ack,
  input wr,   
  output scl,
- inout sda,
+ inout sda, // it's in the slave because sda usage is for reading the data from the slave to the master. 
  input [7:0] wdata,
  input [6:0] addr, /////8-bit  7-bit : addr 1-bit : mode
  output reg [7:0] rdata,
